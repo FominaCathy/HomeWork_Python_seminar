@@ -9,3 +9,14 @@
 def beeramid(bonus, price):
     count = bonus//price # кол-банок, которое можем купить
     
+    temp = 0
+    i = 0        
+    while (count -temp - i**2) > 0:
+        i += 1
+        temp += i**2
+    
+    print(f"на {bonus} бонусов можно постоить пирамиду из {i} уровней")
+
+    
+
+beeramid(5000, 3)
