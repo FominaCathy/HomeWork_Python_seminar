@@ -3,17 +3,20 @@
 # Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 
 def difference(array):
-
+    import math
     min_number = 0
     max_number = 0
 
     for i in array:
-        if i%1 != 0:
+        if str(i).find(".") != -1: # проверяем есть ли вещ.часть и выделяем ее
+            temp = str(i)[str(i).find(".")+1: len(str(i))]
+            float_part = int(temp)/(10**(len(str(i))- str(i).find(".")-1))
+            print(float_part)        
             if  min_number == 0:
-                    min_number = round(i%1, 15)
+                    min_number = float_part
             else:
-                min_number = min(min_number,round(i%1, 15))
-            max_number = max(max_number,round(i%1, 15))
+                min_number = min(min_number,float_part)
+            max_number = max(max_number,float_part)
     if (min_number == 0) and (max_number == 0) :
         print("дробных частей нет")
     else:
