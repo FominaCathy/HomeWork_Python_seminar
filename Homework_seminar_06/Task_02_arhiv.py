@@ -6,7 +6,7 @@ type = 0 #0 — одиночные элементы, 1 — одинаковые.
 length_list = 0 # длина последовательности
 arh_text_list = [] # символ или цепочка которые идут в архив
 
-exe_text = "AAAAABCDEBBBBDDELSRQQQTW"
+exe_text = "AAAAAAAAAAAABCDEBBBBBBBBBBBBBBBBBBBBBBDDELSR"
 
 def rle_code(input_text):
 
@@ -45,21 +45,22 @@ def rle_code(input_text):
 
 def rle_decode (input_text):
     i = 0
-    k = 1 
+    
     output_text = ""
     while i < len(input_text):
+        k = 1 
         if int(input_text[i]) == 0: 
             
             while input_text[i+1:i+k+1].isnumeric() == True: k += 1
             temp = int(input_text[i+1:i+k])+1
 
             output_text = output_text + input_text[i+k:i+k+temp]
-            i += k + temp 
+            i += k + temp
         elif int(input_text[i]) == 1: #повторяющаяся последовательность
             while input_text[i+1:i+k+1].isnumeric() == True: k += 1
-            temp = int(input_text[i+1:i+k])
+            temp = int(input_text[i+1:i+k])+1 
 
-            output_text = output_text + str(input_text[i+k:i+k+1]*(temp+1))
+            output_text = output_text + str(input_text[i+k:i+k+1]*(temp))
             i += k + 1
     return output_text
 
